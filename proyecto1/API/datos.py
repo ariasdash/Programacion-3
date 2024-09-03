@@ -12,7 +12,7 @@ def Extraer(departamento, limite):
 
     if results:
         df = pd.DataFrame.from_records(results)
-        df = df[['departamento_nom', 'ciudad_municipio_nom', 'edad', 'fuente_tipo_contagio', 'estado', 'pais_viajo_1_nom']] 
+        df = df[['departamento_nom', 'ciudad_municipio_nom', 'edad', 'fuente_tipo_contagio', 'estado']] 
         return df
     else:
         print("No se encontraron datos para el departamento especificado.")
