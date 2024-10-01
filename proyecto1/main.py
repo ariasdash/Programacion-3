@@ -30,6 +30,7 @@ print("Resumen de estadisticas::" )
 print(df.describe())
 df = df.dropna(subset=['departamento_nom', 'ciudad_municipio_nom', 'edad', 'fuente_tipo_contagio', 'estado'])
 print("Datos limpios::")
+print(tabulate(df, headers=('NUMERO DE REGISTRO', 'CIUDAD', 'DEPARTAMENTO',  'EDAD', 'TIPO', 'ESTADO', 'PAIS DE PROCEDENCIA'), tablefmt='github', showindex=True))
 
 fallecidos = df[df['estado'] == 'Fallecido']
 
@@ -43,7 +44,3 @@ plt.xlabel('Edad')
 plt.ylabel('Frecuencia')
 plt.grid(True)
 plt.show()
-
-
-
-print(tabulate(df, headers=('NUMERO DE REGISTRO', 'CIUDAD', 'DEPARTAMENTO',  'EDAD', 'TIPO', 'ESTADO', 'PAIS DE PROCEDENCIA'), tablefmt='github', showindex=True))
