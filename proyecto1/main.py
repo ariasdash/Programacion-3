@@ -3,6 +3,7 @@ from UI import interfaz as ui
 from tabulate import tabulate
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 
 departamento, num_casos = ui.interfaz()
 
@@ -29,3 +30,18 @@ print(df.describe())
 df.replace("N/A", np.nan, inplace=True)
 df = df.dropna(subset=['departamento_nom', 'ciudad_municipio_nom', 'edad', 'fuente_tipo_contagio', 'estado'])
 print("Datos limpios::")
+
+fallecidos = df[df['estado'] == 'Fallecido']
+
+plt.figure(figsize=(12, 6))
+moda_fallecidos = int(fallecidos['edad'].mode()[0])
+print(type(moda_fallecidos))
+plt.hist(fallecidos['edad'], bins=50, color='cyan', label=f'moda {moda_fallecidos:.0f} años')
+plt.legend()
+plt.title(f'Distribución de Fallecimientos por Edades en el Departamento de {departamento}')
+plt.xlabel('Edad')
+plt.ylabel('Frecuencia')
+plt.grid(True)
+plt.show()
+
+
